@@ -40,7 +40,7 @@ async function game() {
 
                 PrintCompareResult(strikeCount, ballCount);
 
-                // 스트라이크 볼 카운트를  출력한다
+                // 스트라이크 볼 카운트를 출력한다
                 if (checkWin(strikeCount, ballCount)) {
                     break;
                 }
