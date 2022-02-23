@@ -47,7 +47,6 @@ async function game() {
             }
         }
     }
-
     // 게임종료
 }
 
