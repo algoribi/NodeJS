@@ -1,7 +1,7 @@
 {
   "name": "nodejs",
   "version": "1.0.0",
-  "description": "",
+  "description": "study js & ts",
   "main": "index.js",
   "scripts": {
     "start": "node ./index.js",
