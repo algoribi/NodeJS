@@ -1,5 +1,5 @@
-const readline = require('readline');
-const utils = require("util");
+import * as readline from "readline";
+import * as utils from "util";
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -17,7 +17,7 @@ async function baseballGame() {
     const answerNumberArray : number[] = makeAnswerNumber();
 
     while(true) {
-        const userInput : string = await question("* 숫자를 입력 하세요 : ");
+        const userInput : any = await question("* 숫자를 입력 하세요 : ");
         if (checkGiveUp(userInput)) {
             console.log(`정답 : ${answerNumberArray}\n`);
             break;
@@ -132,7 +132,7 @@ function printCompareResult(strike : number, ball : number) {
 
 async function askNewGame() {
     while(true) {
-        const userInput : string = await question("----------게임 종료----------\n* 새로운 게임을 진행하시겠습니까?\n* Yes or No 를 입력해 주세요 : ");
+        const userInput : any = await question("----------게임 종료----------\n* 새로운 게임을 진행하시겠습니까?\n* Yes or No 를 입력해 주세요 : ");
         if (userInput.toLowerCase() === "yes") {
             return true;
         } else if (userInput.toLowerCase() === "no") {

@@ -1,4 +1,4 @@
-import { baseballGame, askNewGame, finishGame } from './BaseballGame_type';
+import { baseballGame, askNewGame, finishGame } from './BaseballGame';
 
 async function mainGamePlay() {
     let runningGame : boolean = true;
