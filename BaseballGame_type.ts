@@ -27,7 +27,7 @@ async function baseballGame() {
             if (!checkInputFormat(srcNumberStrings)) {
                 inputGuidePrint();
             } else {
-                const numbers : number[] = srcNumberStrings.map((src : any) => Number(src));
+                const numbers : number[] = srcNumberStrings.map((src : string) => Number(src));
                 const [strikeCount, ballCount] = compareUserNumber(answerNumberArray, numbers);
 
                 printCompareResult(strikeCount, ballCount);
