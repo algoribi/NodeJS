@@ -1,8 +1,8 @@
 class Menu {
     name : string;
     productCode : number;
-    price : number;
-
+    price: number;
+    
     constructor(name : string, productCode : number, price : number) {
         this.name = name;
         this.productCode = productCode;
@@ -20,26 +20,27 @@ const menus : Menu[] = [new Menu("갈릭버터쉬림프", 10001, 29900),
                     new Menu("환타", 10008, 2000)];
 
 function makeNameMap() {
-    const mapMenuName = new Map<string, [number, number]>();
+    const mapMenuName = new Map<string, Menu>();
 
     menus.forEach((food) => {
-        mapMenuName.set(food.name, [food.productCode, food.price]);
+        mapMenuName.set(food.name, new Menu(food.name, food.productCode, food.price));
     });
 
     return mapMenuName;
 }
 
 function makeProductCodeMap() {
-    const mapMenuProductCode = new Map<number, [string, number]>();
+    const mapMenuProductCode = new Map<number, Menu>();
 
     menus.forEach((food) => {
-        mapMenuProductCode.set(food.productCode, [food.name, food.price]);
+        mapMenuProductCode.set(food.productCode, new Menu(food.name, food.productCode, food.price));
     });
 
     return mapMenuProductCode;
 }
 
 export {
+    Menu,
     makeNameMap,
     makeProductCodeMap
 }

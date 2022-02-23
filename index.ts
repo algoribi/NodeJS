@@ -1,9 +1,9 @@
-import { pizzaOrder, finishOrder } from './ts_project/pizzaOrder';
-import { makeNameMap, makeProductCodeMap } from './ts_project/makeMenu';
+import { pizzaOrder, finishOrder } from './pizzaOrder';
+import { Menu, makeNameMap, makeProductCodeMap } from './makeMenu';
 
 async function mainOrder() {
-    const mapMenuName : Map<string, [number, number]> = makeNameMap(); 
-    const mapMenuProductCode : Map<number, [string, number]> = makeProductCodeMap();
+    const mapMenuName : Map<string, Menu> = makeNameMap(); 
+    const mapMenuProductCode : Map<number, Menu> = makeProductCodeMap();
 
     await pizzaOrder(mapMenuName, mapMenuProductCode);
     finishOrder();
