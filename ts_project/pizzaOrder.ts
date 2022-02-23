@@ -26,19 +26,28 @@ async function pizzaOrder(mapMenuName : Map<string, [number, number]>, mapMenuPr
             break;
         } else if (checkInputTypeString(userInput) && mapMenuName.has(userInput)) {
             menus.push(userInput);
-        } else if (checkInputTypeNumber(userInput) && mapMenuProductCode.has(userInput)) {
-            menus.push(userInput.toString());
+        } else if (mapMenuProductCode.has(parseInt(userInput))) {
+            menus.push(userInput);
         } else {
             inputGuidePrint();
         }
     }
 }
 
+// 수정 부분 : map에서 어떻게 출력 할 것인지. 또 똑같이 string으로 메뉴 명과 상품 코드를 받는데 이걸 어떻게 구분 할 것인지 생각해야 한다.
 function confirmAnOrder(menus : string[], mapMenuName : Map<string, [number, number]>) {
     console.log("[주문을 확인합니다.]")
     menus.forEach((food) => {
+        mapMenuName.forEach((value, key) => {
+            // if (key === food )
+        });
+    });
+    // 질문!
+    /*
+    menus.forEach((food) => {
         console.log("* " + food + "(" + mapMenuName.get(food)[0] + ") : " + mapMenuName.get(food)[1] + "원");
     });
+    */
 }
 
 function printMenu(mapMenuProductCode : Map<number, [string, number]>) {
@@ -50,11 +59,7 @@ function printMenu(mapMenuProductCode : Map<number, [string, number]>) {
 }
 
 function checkDone(userInput : string) {
-    return userInput.toLowerCase() === 'Done';
-}
-
-function checkInputTypeNumber(target : any) {
-    return Object.prototype.toString.call(target).slice(8, -1) === "Number";
+    return userInput.toLowerCase() === 'done';
 }
 
 function checkInputTypeString(target : any) {
