@@ -14,20 +14,20 @@ function finishGame() {
 
 async function baseballGame() {
     gameTitlePrint();
-    const answerNumberArray = makeAnswerNumber();
+    const answerNumberArray : number[] = makeAnswerNumber();
 
     while(true) {
-        const userInput = await question("* 숫자를 입력 하세요 : ");
+        const userInput : string = await question("* 숫자를 입력 하세요 : ");
         if (checkGiveUp(userInput)) {
             console.log(`정답 : ${answerNumberArray}\n`);
             break;
         } else {
-            const srcNumberStrings = userInput.split(' '); 
+            const srcNumberStrings : string[] = userInput.split(' '); 
 
             if (!checkInputFormat(srcNumberStrings)) {
                 inputGuidePrint();
             } else {
-                const numbers = srcNumberStrings.map((src : any) => Number(src));
+                const numbers : number[] = srcNumberStrings.map((src : any) => Number(src));
                 const [strikeCount, ballCount] = compareUserNumber(answerNumberArray, numbers);
 
                 printCompareResult(strikeCount, ballCount);
@@ -51,20 +51,20 @@ function gameTitlePrint() {
 }
 
 function makeAnswerNumber() {
-    const number = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-    const answerNumberArray = [];
+    const numbers : number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const answerNumberArray : number[] = [];
 
     for (let i = 0; i <3; i++) {
-        const pickNum = Math.floor(Math.random() * number.length);
-        answerNumberArray.push(number[pickNum]);
-        number.splice(pickNum, 1);
+        const pickNum : number = Math.floor(Math.random() * numbers.length);
+        answerNumberArray.push(numbers[pickNum]);
+        numbers.splice(pickNum, 1);
     }
 
     return answerNumberArray;
 }
 
 function checkInputFormat(userArr : string[]) {
-    let checkInputForm = true;
+    let checkInputForm : boolean = true;
 
     if (userArr.length !== 3) {
         checkInputForm = false;
@@ -92,8 +92,8 @@ function inputGuidePrint() {
 }
 
 function compareUserNumber(answerArr : number[], userArr : number[]) {
-    let strike = 0;
-    let ball = 0;
+    let strike : number = 0;
+    let ball : number = 0;
 
     answerArr.forEach((answer, i) => {
         userArr.forEach((user, j) => {
@@ -132,7 +132,7 @@ function printCompareResult(strike : number, ball : number) {
 
 async function askNewGame() {
     while(true) {
-        const userInput = await question("----------게임 종료----------\n* 새로운 게임을 진행하시겠습니까?\n* Yes or No 를 입력해 주세요 : ");
+        const userInput : string = await question("----------게임 종료----------\n* 새로운 게임을 진행하시겠습니까?\n* Yes or No 를 입력해 주세요 : ");
         if (userInput.toLowerCase() === "yes") {
             return true;
         } else if (userInput.toLowerCase() === "no") {
