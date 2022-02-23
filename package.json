@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ",
+    "start": "node ./index.js",
+    "tstart": "ts-node ./index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Reed",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.3"
+  "devDependencies": {
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
   }
 }
