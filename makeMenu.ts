@@ -15,10 +15,10 @@ class MenuMap {
     private mapMenuProductCode = new Map<number, Menu>();
 
     constructor(menuArr : Menu[]) {
-        menuArr.forEach((food) => {
+        for (let food of menuArr) {
             this.mapMenuName.set(food.name, new Menu(food.name, food.productCode, food.price));
             this.mapMenuProductCode.set(food.productCode, new Menu(food.name, food.productCode, food.price));
-        });
+        }
     }
 
     getNameKey(key : string) {
@@ -40,9 +40,9 @@ class MenuMap {
     printMenu() {
         console.log("---------- Menu ----------");
 
-        this.mapMenuName.forEach((value) => {
+        for (let [key, value] of this.mapMenuName) {
             console.log(`* ${value.name}(${value.productCode}) : ${value.price}원`);
-        });
+        }
     }
 }
 

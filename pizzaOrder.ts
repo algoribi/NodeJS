@@ -27,7 +27,7 @@ async function pizzaOrder(myRestaurantMenu : MenuMap) {
         } else if (myRestaurantMenu.hasProductCodeKey(parseInt(userInput))) {
             userOrderMenus.push(myRestaurantMenu.getProductCodeKey(parseInt(userInput)));
         } else if (checkDone(userInput)) {
-            confirmAnOrder(userOrderMenus);
+            confirmOrder(userOrderMenus);
             console.log("[주문을 종료합니다.]\n");
             break;
         } else {
@@ -36,14 +36,13 @@ async function pizzaOrder(myRestaurantMenu : MenuMap) {
     }
 }
 
-function confirmAnOrder(userOrderMenus : Menu[]) {
-    console.log("\n[주문을 확인합니다.]");
+function confirmOrder(userOrderMenus : Menu[]) {
+    console.log("\n[주문을 확인합니다.]"); 
 
-    let totalPrice: number = 0;
-    userOrderMenus.forEach((orderMenu) => {
+    let totalPrice = userOrderMenus.reduce((sumPrice : number, orderMenu : Menu) => {
         console.log(`* ${orderMenu.name}(${orderMenu.productCode}) : ${orderMenu.price}원`);
-        totalPrice += orderMenu.price;
-    });
+        return sumPrice + orderMenu.price;
+    }, 0);
 
     console.log(`\n => 총 금액 : ${totalPrice}원`);
 }
